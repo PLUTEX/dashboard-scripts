@@ -1,0 +1,7 @@
+#! /usr/bin/env bash
+
+if [ ! -d /tmp/chromium-dashboard ]; then
+  mkdir -p /tmp/chromium-dashboard/Default
+  cp -r /home/dashboard/.config/chromium/* /tmp/chromium-dashboard/
+  chown -R dashboard:dashboard /tmp/chromium-dashboard
+fi

@@ -1,0 +1,17 @@
+[Unit]
+Description=Dashboard with chromium
+
+[Service]
+Type=simple
+OOMScoreAdjust=-1000
+ExecStartPre=/bin/bash -c 'chmod 0660 /dev/tty*'
+ExecStartPre=/usr/local/bin/chromium-prepare
+PermissionsStartOnly=true
+ExecStart=/usr/bin/startx -- -logfile /tmp/Xorg.log
+User=dashboard
+Restart=always
+Environment="XAUTHORITY=/tmp/%i.Xauthority"
+
+[Install]
+WantedBy=graphical.target
+
